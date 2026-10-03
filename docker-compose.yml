@@ -1,0 +1,42 @@
+
+services:
+  # 1. MongoDB database container 
+  mongodb:
+    image: mongo:7.0
+    container_name: task_db
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=Taskmanager
+
+  # 2. Node.js Backend container 
+  backend:
+    build: ./taskbackend
+    container_name: task_backend
+    restart: always
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./taskbackend/.env  # <--- Path to backend .env file
+    environment:
+      - PORT=3000
+      - MONGO_URI=mongodb://mongodb:27017/Taskmanager
+    depends_on:
+      - mongodb
+
+  # 3. React Frontend container
+  frontend:
+    build: ./task-manager
+    container_name: task_frontend
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+# Persistent volume for MongoDB data 
+volumes:
+  mongo-data:
