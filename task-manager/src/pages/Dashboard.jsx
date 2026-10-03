@@ -9,8 +9,12 @@ const Dashboard = () => {
     <div>
     {user ?(  
       <>
-        <h2>Welcome {user.name}</h2>
+        
          <Navbar/>
+         <h2 className="mt-6 mb-4 px-6 py-3 text-xl font-semibold text-gray-800 dark:text-white bg-gray-100 dark:bg-gray-800 rounded-md shadow">
+          Welcome {user.name}
+        </h2>
+
 <div className="w-full p-4">
   
   <h2 className="text-2xl md:text-4xl font-bold">
