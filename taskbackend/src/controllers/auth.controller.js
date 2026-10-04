@@ -44,7 +44,7 @@ async function registerController(req,res){
    res.cookie("token",token,{
       httpOnly:true,
       secure:false,
-      sameSite:"strict",
+      sameSite:"none",
       maxAge:24*60*60*1000 
     })
     // send response
