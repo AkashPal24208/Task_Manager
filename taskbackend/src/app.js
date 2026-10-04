@@ -4,9 +4,12 @@ const cors = require("cors");
 const app = express()
 const authRouter = require('./Routers/auth.router')
 app.use(cors({
-  origin: ["http://localhost", "http://localhost:5173"],// tumhara React app port
-  credentials: true                // agar cookies/session bhejne hain
+  origin: [ "http://localhost:5173",
+    "https://task-manager-eight-lemon-45.vercel.app"
+  ],
+  credentials: true               
 }));
+
 app.use(express.json());
 app.use(cookieParser());
 const authMiddleware = require('./middlewares/auth.middleware');
