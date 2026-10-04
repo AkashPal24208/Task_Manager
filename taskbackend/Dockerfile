@@ -11,7 +11,7 @@ COPY taskbackend/package*.json ./
 RUN npm install
 
 # copy the rest of the application code 
-COPY . .
+COPY taskbackend/ .
 
 # Expose backend port parallel to app port 
 EXPOSE 3000
