@@ -15,7 +15,7 @@ const connectToDB = require('./src/config/database');
 const PORT = process.env.PORT || 3000;
 connectToDB()
   .then(() => {
-    app.listen(PORT, () => {
+    app.listen(PORT,"0.0.0.0", () => {
       console.log(`Server running at http://localhost:${PORT}`);
     });
   })
