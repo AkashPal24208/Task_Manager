@@ -5,7 +5,7 @@ FROM node:20-alpine
 WORKDIR /app
 
 # copy package management files 
-COPY package*.json ./
+COPY taskbackend/package*.json ./
 
 # Install production dependency
 RUN npm install
